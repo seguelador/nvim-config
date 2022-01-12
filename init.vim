@@ -30,6 +30,12 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+" Others
+Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries' }
+Plug 'mbbill/undotree'
+" code formatter
+Plug 'sbdchd/neoformat'
+
 " Color schema
 Plug 'gruvbox-community/gruvbox'
 
@@ -38,6 +44,23 @@ call plug#end()
 
 " Basics
 let mapleader = " "
+
+" Yank current selection into system clipboard
+vmap <C-c> "*y
+" Yank current line into system clipboard (if nothing is selected)
+nmap <C-c> "*Y
+" Paste from system clipboard
+nmap <C-v> "*p
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <Leader>+ :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
@@ -48,6 +71,11 @@ endfun
 augroup THE_PRIMEAGEN
     autocmd!
     autocmd BufWritePre * :call TrimWhitespace()
+augroup END
+
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
 augroup END
 
 lua require("theprimeagen")

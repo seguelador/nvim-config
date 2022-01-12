@@ -1,5 +1,5 @@
 function test() {
-	const littleRough = asdaa ;
+    const littleRough = asdaa ;
 }
 
 function test2() {
