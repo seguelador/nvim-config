@@ -33,6 +33,8 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " Others
 Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries' }
 Plug 'mbbill/undotree'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 " code formatter
 Plug 'sbdchd/neoformat'
 
@@ -56,7 +58,6 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 vnoremap J :m '>+1<CR>gv=gv
