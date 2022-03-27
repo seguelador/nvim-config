@@ -35,8 +35,12 @@ Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries' }
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-commentary'
 " code formatter
 Plug 'sbdchd/neoformat'
+
+" Markdown Addon
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " Color schema
 Plug 'gruvbox-community/gruvbox'
@@ -74,10 +78,10 @@ augroup THE_PRIMEAGEN
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre * undojoin | Neoformat
+" augroup END
 
 lua require("theprimeagen")
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
