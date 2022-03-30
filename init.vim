@@ -4,8 +4,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+
 Plug 'onsails/lspkind-nvim'
 " Plug 'github/copilot.vim'
 Plug 'nvim-lua/lsp_extensions.nvim'
@@ -44,6 +46,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " Color schema
 Plug 'gruvbox-community/gruvbox'
+
 
 call plug#end()
 
