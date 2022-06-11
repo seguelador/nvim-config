@@ -4,7 +4,7 @@ local cmp = require'cmp'
 -- Setup nvim-cmp.
 local lspkind = require("lspkind")
 require('lspkind').init({
-    with_text = true,
+  mode = 'symbol_text',
 })
 
 cmp.setup({
