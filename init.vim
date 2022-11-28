@@ -1,20 +1,12 @@
 call plug#begin('~/.vim/plugged')
 
-" Plebvim lsp Plugins
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
+" Coc vim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'onsails/lspkind-nvim'
 " Plug 'github/copilot.vim'
-Plug 'nvim-lua/lsp_extensions.nvim'
 
 " Plug 'nvim-lua/completion-nvim'
 Plug 'glepnir/lspsaga.nvim'
-Plug 'simrat39/symbols-outline.nvim'
 " Plug 'tjdevries/nlua.nvim'
 " Plug 'tjdevries/lsp_extensions.nvim'
 
@@ -38,11 +30,14 @@ Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
-" code formatter
-Plug 'sbdchd/neoformat'
+Plug 'sbdchd/neoformat' " code formatter
+Plug 'editorconfig/editorconfig-vim' " editorconfig.org
+
+" JS Docs
+Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx','typescript'], 'do': 'make install'}
 
 " Markdown Addon
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Color schema
 Plug 'gruvbox-community/gruvbox'
@@ -86,5 +81,4 @@ augroup END
 "   autocmd BufWritePre * undojoin | Neoformat
 " augroup END
 
-lua require("theprimeagen")
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
