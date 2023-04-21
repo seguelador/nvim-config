@@ -33,14 +33,12 @@ Plug 'tpope/vim-commentary'
 Plug 'sbdchd/neoformat' " code formatter
 Plug 'editorconfig/editorconfig-vim' " editorconfig.org
 
-" JS Docs
-Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'javascript.jsx','typescript'], 'do': 'make install'}
-
-" Markdown Addon
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
 " Color schema
 Plug 'gruvbox-community/gruvbox'
+
+" For fun
+" Cellular Automation animation
+Plug 'eandrju/cellular-automaton.nvim'
 
 
 call plug#end()
@@ -55,6 +53,7 @@ vmap <C-c> "*y
 nmap <C-c> "*Y
 " Paste from system clipboard
 nmap <C-v> "*p
+
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -62,6 +61,7 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <Leader>fml :CellularAutomaton make_it_rain<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
