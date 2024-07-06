@@ -21,6 +21,7 @@ set noshowmode
 set completeopt=menuone,noinsert,noselect
 set colorcolumn=80
 set signcolumn=yes
+set encoding=utf8
 
 " Give more space for displaying messages.
 set cmdheight=2

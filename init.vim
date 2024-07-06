@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 " Coc vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 
 " Plug 'nvim-lua/completion-nvim'
 Plug 'glepnir/lspsaga.nvim'
@@ -24,13 +24,16 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+" Debugger
+Plug 'mfussenegger/nvim-dap'
+
 " Others
 Plug 'darrikonn/vim-gofmt', { 'do': ':GoUpdateBinaries' }
 Plug 'mbbill/undotree'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-commentary'
-Plug 'sbdchd/neoformat' " code formatter
+Plug 'stevearc/conform.nvim' " code formatter
 Plug 'editorconfig/editorconfig-vim' " editorconfig.org
 
 " Color schema
@@ -76,9 +79,41 @@ augroup THE_PRIMEAGEN
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
-" augroup fmt
-"   autocmd!
-"   autocmd BufWritePre * undojoin | Neoformat
-" augroup END
+lua << EOF
+-- Setup treesitter
+require('nvim-treesitter.configs').setup {
+  highlight = {
+    enable = true, -- Enable TreeSitter syntax highlighting
+  },
+  incremental_selection = {
+    enable = true, -- Enable incremental selection (expand/shrink selections based on syntax nodes)
+  },
+  textobjects = {
+    enable = true, -- Enable TreeSitter textobjects (select, move, swap, etc. based on syntax)
+  },
+}
 
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
+-- Setup conform
+require("conform").setup({
+    formatters_by_ft = {
+        typescript = { "prettierd" },
+        python = { "black" },
+        javascript = { "prettierd" },
+        go = { "gofmt" },
+        java = { "google_java_format" }
+    },
+    format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true
+    },
+})
+
+local dap = require('dap')
+dap.adapters.python = {
+  type = 'executable';
+  command = os.getenv('HOME') .. '/.virtualenvs/tools/bin/python';
+  args = { '-m', 'debugpy.adapter' };
+}
+
+EOF
+
